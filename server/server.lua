@@ -28,6 +28,7 @@ function RetrieveComponents()
 	Logger = exports["mythic-base"]:FetchComponent("Logger")
 	Inventory = exports['mythic-base']:FetchComponent('Inventory')
     VOIP = exports['mythic-base']:FetchComponent('VOIP')
+    Version = exports['mythic-base']:FetchComponent('Version')
 end
 
 AddEventHandler('Core:Shared:Ready', function()
@@ -39,7 +40,8 @@ AddEventHandler('Core:Shared:Ready', function()
 		'Middleware',
 		'Logger',
 		'Inventory',
-		'VOIP'
+		'VOIP',
+        'Version'
     }, function(error)
         if #error > 0 then return end -- Do something to handle if not all dependencies loaded
         RetrieveComponents()
@@ -57,6 +59,8 @@ AddEventHandler('Core:Shared:Ready', function()
 		Inventory.Items:RegisterUse('megaphone', 'VOIP', function(source, itemData)
             TriggerClientEvent('VOIP:Client:Megaphone:Use', source)
         end)
+
+        Version:Check('Mythic-Framework/Mythic-VersionCheckers', GetCurrentResourceName())
     end)
 end)
 
