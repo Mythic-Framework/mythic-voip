@@ -18,7 +18,7 @@ local radioRanges = {
 }
 
 function GetRadioSubmixType(playerCoords, playerVeh)
-	if RADIO_CHANNEL >= 100 then -- Shitty Radio
+	if RADIO_CHANNEL >= 100 then -- Low end Radio
 		local isInVehicle = playerVeh and playerVeh > 0
 		local dist = #(GetEntityCoords(LocalPlayer.state.ped) - playerCoords)
 
